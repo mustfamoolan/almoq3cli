@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"text/template"
 	"time"
 
@@ -116,8 +117,13 @@ func Scaffold(projectName string) error {
 
 	fmt.Printf("\n%s Setting up frontend environment (this may take a minute)...\n", color.CyanString("⚙️"))
 
+	npmName := "npm"
+	if runtime.GOOS == "windows" {
+		npmName = "npm.cmd"
+	}
+
 	// Run npm install in frontend directory
-	npmInstall := exec.Command("npm", "install")
+	npmInstall := exec.Command(npmName, "install")
 	npmInstall.Dir = filepath.Join(projectName, "frontend")
 	if err := npmInstall.Run(); err != nil {
 		fmt.Printf("%s Warning: Failed to run npm install. Please run it manually in the frontend directory.\n", color.YellowString("⚠️"))
@@ -126,7 +132,7 @@ func Scaffold(projectName string) error {
 	}
 
 	// Run npm run build
-	npmBuild := exec.Command("npm", "run", "build")
+	npmBuild := exec.Command(npmName, "run", "build")
 	npmBuild.Dir = filepath.Join(projectName, "frontend")
 	if err := npmBuild.Run(); err != nil {
 		fmt.Printf("%s Warning: Failed to run npm run build.\n", color.YellowString("⚠️"))
