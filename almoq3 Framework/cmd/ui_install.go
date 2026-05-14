@@ -52,6 +52,18 @@ var uiInstallCmd = &cobra.Command{
 			}
 		}
 
+		// --- NEW: Update existing project routes to support React ---
+		fmt.Printf("%s Syncing Go routes with React engine...\n", color.BlueString("🔄"))
+		webRoutesPath := "routes/web.go"
+		if _, err := os.Stat(webRoutesPath); err == nil {
+			// Update the file to include React serving logic
+			if err := generateFromTemplate("routes_web.tmpl", webRoutesPath, data); err != nil {
+				fmt.Printf("%s Failed to update routes: %v\n", color.RedString("❌"), err)
+			} else {
+				fmt.Printf("%s Updated routes/web.go successfully.\n", color.GreenString("✓"))
+			}
+		}
+
 		// Create a basic index.html for Vite
 		indexHTML := `<!doctype html>
 <html lang="en">
