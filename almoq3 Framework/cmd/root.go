@@ -15,7 +15,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const Version = "1.0.2"
+const Version = "1.0.3"
 const RepoURL = "https://api.github.com/repos/mustfamoolan/almoq3cli/releases/latest"
 
 var rootCmd = &cobra.Command{

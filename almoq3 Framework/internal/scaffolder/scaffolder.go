@@ -92,7 +92,7 @@ func Scaffold(projectName string) error {
 	fmt.Printf("Next steps:\n")
 	fmt.Printf("  cd %s\n", projectName)
 	fmt.Printf("  go mod tidy\n")
-	fmt.Printf("  make run\n")
+	fmt.Printf("  go run main.go %s\n", color.HiBlackString("(or make run)"))
 
 	return nil
 }

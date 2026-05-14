@@ -1,6 +1,6 @@
 {
   "name": "almoq3-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The high-performance Go framework for Laravel lovers.",
   "main": "bin/cli.js",
   "bin": {
