@@ -1,0 +1,19 @@
+{
+  "name": "almoq3-masterpiece-final",
+  "version": "1.0.0",
+  "description": "almoq3 Framework Project",
+  "main": "main.go",
+  "scripts": {
+    "dev": "go run main.go",
+    "build": "go build -o bin/app main.go",
+    "seed": "go run cmd/seed/main.go",
+    "migrate": "almoq3 migrate"
+  },
+  "keywords": [
+    "go",
+    "almoq3",
+    "framework"
+  ],
+  "author": "",
+  "license": "MIT"
+}

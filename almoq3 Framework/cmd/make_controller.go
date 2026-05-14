@@ -1,0 +1,63 @@
+package cmd
+
+import (
+	"bytes"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"text/template"
+
+	"github.com/almoq3/almoq3-cli/internal/templates"
+	"github.com/fatih/color"
+	"github.com/spf13/cobra"
+)
+
+var makeControllerCmd = &cobra.Command{
+	Use:   "make:controller [Name]",
+	Short: "Create a new controller",
+	Args:  cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		if !IsProjectRoot() {
+			color.Red("❌ Error: This command can only be executed from the root directory of an almoq3 project.")
+			return
+		}
+
+		name := args[0]
+		// Capitalize first letter for the struct
+		structName := strings.Title(strings.ToLower(name))
+		fileName := strings.ToLower(name) + "_controller.go"
+		targetPath := filepath.Join("app", "controllers", fileName)
+
+		fmt.Printf("%s Generating Controller: %s...\n", color.CyanString("⚡"), color.YellowString(structName))
+
+		data, err := templates.Files.ReadFile("controller.tmpl")
+		if err != nil {
+			fmt.Printf("%s %v\n", color.RedString("Error:"), err)
+			return
+		}
+
+		tmpl, err := template.New("controller").Parse(string(data))
+		if err != nil {
+			fmt.Printf("%s %v\n", color.RedString("Error:"), err)
+			return
+		}
+
+		var buf bytes.Buffer
+		if err := tmpl.Execute(&buf, map[string]string{"Name": structName}); err != nil {
+			fmt.Printf("%s %v\n", color.RedString("Error:"), err)
+			return
+		}
+
+		if err := os.WriteFile(targetPath, buf.Bytes(), 0644); err != nil {
+			fmt.Printf("%s %v\n", color.RedString("Error:"), err)
+			return
+		}
+
+		fmt.Printf("%s Controller created successfully at %s\n", color.GreenString("✅"), color.CyanString(targetPath))
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(makeControllerCmd)
+}

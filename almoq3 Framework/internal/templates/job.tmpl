@@ -1,0 +1,21 @@
+package jobs
+
+import (
+	"fmt"
+)
+
+type {{.Name}}Job struct {
+	Payload string
+}
+
+func New{{.Name}}Job(payload string) *{{.Name}}Job {
+	return &{{.Name}}Job{
+		Payload: payload,
+	}
+}
+
+func (j *{{.Name}}Job) Handle() error {
+	// Job logic here
+	fmt.Printf("Processing {{.Name}}Job with payload: %s\n", j.Payload)
+	return nil
+}

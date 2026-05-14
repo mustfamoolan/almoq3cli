@@ -1,0 +1,38 @@
+package requests
+
+import (
+	"github.com/go-playground/validator/v10"
+	"github.com/gofiber/fiber/v2"
+)
+
+type {{.Name}}Request struct {
+	// Define your fields here
+	// Example: Email string `json:"email" validate:"required,email"`
+}
+
+func (r *{{.Name}}Request) Validate(c *fiber.Ctx) error {
+	// 1. Bind Body
+	if err := c.BodyParser(r); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": "Invalid request body",
+		})
+	}
+
+	// 2. Validate
+	validate := validator.New()
+	err := validate.Struct(r)
+	if err != nil {
+		errors := make(map[string][]string)
+		for _, err := range err.(validator.ValidationErrors) {
+			field := err.Field()
+			errors[field] = append(errors[field], "The "+field+" field is invalid ("+err.Tag()+")")
+		}
+
+		return c.Status(fiber.StatusUnprocessableEntity).JSON(fiber.Map{
+			"message": "The given data was invalid.",
+			"errors":  errors,
+		})
+	}
+
+	return nil
+}

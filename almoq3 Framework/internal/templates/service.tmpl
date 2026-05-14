@@ -1,0 +1,23 @@
+package services
+
+import (
+	"gorm.io/gorm"
+)
+
+type {{.Name}}Service struct {
+	db *gorm.DB
+}
+
+func New{{.Name}}Service(db *gorm.DB) *{{.Name}}Service {
+	return &{{.Name}}Service{
+		db: db,
+	}
+}
+
+// Add your business logic methods here
+// Example:
+// func (s *{{.Name}}Service) FindAll() ([]models.{{.Name}}, error) {
+// 	var items []models.{{.Name}}
+// 	err := s.db.Find(&items).Error
+// 	return items, err
+// }

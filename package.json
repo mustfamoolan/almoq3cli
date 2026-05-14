@@ -1,0 +1,25 @@
+{
+  "name": "@almoq3/cli",
+  "version": "1.0.0",
+  "description": "The high-performance Go framework for Laravel lovers.",
+  "main": "bin/cli.js",
+  "bin": {
+    "almoq3": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustafa-sadee/almoq3-cli.git"
+  },
+  "keywords": [
+    "go",
+    "framework",
+    "laravel",
+    "cli",
+    "almoq3"
+  ],
+  "author": "Mustafa Sadee",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+package bootstrap
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"github.com/fatih/color"
+)
+
+type Job interface {
+	Handle() error
+}
+
+func StartWorker(ctx context.Context) {
+	fmt.Printf("%s Worker engine started...\n", color.CyanString("👷"))
+
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println("Worker shutting down...")
+			return
+		default:
+			// Logic to pop from Redis and execute
+			// This is a simplified stub. In a real scenario, use a dedicated queue library or custom Redis BLPOP.
+			time.Sleep(1 * time.Second)
+		}
+	}
+}

@@ -1,0 +1,14 @@
+package middleware
+
+import (
+	"github.com/gofiber/fiber/v2"
+)
+
+func {{.Name}}Middleware() fiber.Handler {
+	return func(c *fiber.Ctx) error {
+		// Middleware logic here
+		// Example: Check headers or session
+
+		return c.Next()
+	}
+}
