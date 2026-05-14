@@ -1,0 +1,21 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import UIShowcase from './UIShowcase.jsx'
+import './index.css'
+
+const Main = () => {
+  const path = window.location.pathname;
+  
+  if (path === '/ui-showcase') {
+    return <UIShowcase />;
+  }
+  
+  return <App />;
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Main />
+  </React.StrictMode>,
+)
