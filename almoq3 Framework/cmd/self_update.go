@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const RepoURL = "https://api.github.com/repos/mustafa-sadee/almoq3-cli/releases/latest"
+// RepoURL is now defined in root.go
 
 type GitHubRelease struct {
 	TagName string `json:"tag_name"`
