@@ -1,5 +1,5 @@
 {
-  "name": "@almoq3/cli",
+  "name": "almoq3-cli",
   "version": "1.0.0",
   "description": "The high-performance Go framework for Laravel lovers.",
   "main": "bin/cli.js",

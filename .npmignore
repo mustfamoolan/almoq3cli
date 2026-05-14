@@ -1,0 +1,26 @@
+# Ignore source code to keep the package small
+almoq3 Framework/
+internal/
+cmd/
+
+# Ignore test projects
+mytest/
+almoq3-prod-test/
+almoq3-dist-test/
+almoq3-dist-test-v2/
+almoq3-masterpiece/
+almoq3-masterpiece-v2/
+almoq3-masterpiece-final/
+almoq3-masterpiece-final-v3/
+almoq3-final-release/
+almoq3-final-v2/
+
+# Ignore dev config
+.git/
+.gitignore
+.env
+README.md
+
+# DO NOT ignore binaries (these will be included in the NPM package)
+# almoq3
+# almoq3.exe
