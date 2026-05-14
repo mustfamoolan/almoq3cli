@@ -1,0 +1,44 @@
+# Binaries and executables
+*.exe
+*.exe~
+almoq3
+bin/almoq3
+bin/almoq3.exe
+
+# Test Projects (Scaffolded during development)
+mytest/
+almoq3-prod-test/
+almoq3-dist-test/
+almoq3-dist-test-v2/
+almoq3-masterpiece/
+almoq3-masterpiece-v2/
+almoq3-masterpiece-final/
+almoq3-masterpiece-final-v3/
+almoq3-final-release/
+almoq3-final-v2/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+vendor/
+node_modules/
+
+# Logs and temporary files
+*.log
+storage/logs/*
+!storage/logs/.gitkeep
+temp/
+tmp/
+
+# Environment files
+.env
+.env.local
+.env.production
