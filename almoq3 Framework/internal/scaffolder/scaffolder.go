@@ -23,7 +23,7 @@ type Config struct {
 func Scaffold(projectName string) error {
 	config := Config{
 		ProjectName:      projectName,
-		FrameworkVersion: "2.1.2",
+		FrameworkVersion: "2.1.3",
 		CreatedAt:        time.Now().Format("2006-01-02 15:04:05"),
 	}
 
