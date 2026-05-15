@@ -15,14 +15,16 @@ import (
 )
 
 type Config struct {
-	ProjectName string
-	CreatedAt   string
+	ProjectName      string
+	FrameworkVersion string
+	CreatedAt        string
 }
 
 func Scaffold(projectName string) error {
 	config := Config{
-		ProjectName: projectName,
-		CreatedAt:   time.Now().Format("2006-01-02 15:04:05"),
+		ProjectName:      projectName,
+		FrameworkVersion: "2.1.0",
+		CreatedAt:        time.Now().Format("2006-01-02 15:04:05"),
 	}
 
 	fmt.Printf("%s Creating project: %s\n", color.CyanString("⚙️"), color.YellowString(projectName))

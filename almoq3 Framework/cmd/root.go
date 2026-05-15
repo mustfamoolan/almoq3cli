@@ -15,7 +15,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const Version = "2.0.4"
+const Version = "2.1.0"
 const RepoURL = "https://api.github.com/repos/mustfamoolan/almoq3cli/releases/latest"
 
 var rootCmd = &cobra.Command{
@@ -80,8 +80,6 @@ func getProjectName() string {
 }
 
 func checkForUpdates() {
-	// This is a simple version check. In a high-traffic app, 
-	// we would cache this result to avoid hitting GitHub API limits.
 	resp, err := http.Get(RepoURL)
 	if err != nil {
 		return
@@ -98,17 +96,25 @@ func checkForUpdates() {
 	latestVersion := strings.TrimPrefix(release.TagName, "v")
 	if latestVersion != "" && latestVersion != Version {
 		fmt.Println()
-		color.Yellow("┌──────────────────────────────────────────────────────────┐")
-		fmt.Printf("%s  Update available: %s → %s %s\n", 
-			color.YellowString("│"), 
-			color.RedString(Version), 
-			color.GreenString(latestVersion),
-			color.YellowString("│"))
-		fmt.Printf("%s  Run %s to update    %s\n", 
-			color.YellowString("│"), 
-			color.CyanString("almoq3 self-update"),
-			color.YellowString("│"))
-		color.Yellow("└──────────────────────────────────────────────────────────┘")
+		fmt.Println(color.YellowString("╔══════════════════════════════════════════════════════════╗"))
+		fmt.Printf("%s  🚀 almoq3 Update Available!                              %s\n",
+			color.YellowString("║"), color.YellowString("║"))
+		fmt.Printf("%s  Current: %-10s  Latest: %-10s              %s\n",
+			color.YellowString("║"),
+			color.RedString("v"+Version),
+			color.GreenString("v"+latestVersion),
+			color.YellowString("║"))
+		fmt.Printf("%s                                                          %s\n",
+			color.YellowString("║"), color.YellowString("║"))
+		fmt.Printf("%s  1. Update CLI:     %s      %s\n",
+			color.YellowString("║"),
+			color.CyanString("npm i -g almoq3-cli@latest"),
+			color.YellowString("║"))
+		fmt.Printf("%s  2. Upgrade project: %s                   %s\n",
+			color.YellowString("║"),
+			color.CyanString("almoq3 upgrade"),
+			color.YellowString("║"))
+		fmt.Println(color.YellowString("╚══════════════════════════════════════════════════════════╝"))
 		fmt.Println()
 	}
 }
