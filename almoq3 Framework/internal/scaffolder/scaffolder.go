@@ -23,7 +23,7 @@ type Config struct {
 func Scaffold(projectName string) error {
 	config := Config{
 		ProjectName:      projectName,
-		FrameworkVersion: "2.1.0",
+		FrameworkVersion: "2.1.2",
 		CreatedAt:        time.Now().Format("2006-01-02 15:04:05"),
 	}
 
@@ -90,6 +90,7 @@ func Scaffold(projectName string) error {
 		"tailwind_config.tmpl":   "frontend/tailwind.config.js",
 		"globals_css.tmpl":       "frontend/src/index.css",
 		"app_jsx.tmpl":           "frontend/src/App.jsx",
+		"docs_jsx.tmpl":          "frontend/src/Docs.jsx",
 		"ui_showcase_jsx.tmpl":   "frontend/src/UIShowcase.jsx",
 		"main_jsx.tmpl":          "frontend/src/main.jsx",
 	}

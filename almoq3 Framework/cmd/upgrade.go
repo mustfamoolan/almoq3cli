@@ -75,6 +75,7 @@ Updated (framework-managed):
 		// 3. Framework-owned files only
 		frameworkFiles := map[string]string{
 			"app_jsx.tmpl":           "frontend/src/App.jsx",
+			"docs_jsx.tmpl":          "frontend/src/Docs.jsx",
 			"ui_showcase_jsx.tmpl":   "frontend/src/UIShowcase.jsx",
 			"main_jsx.tmpl":          "frontend/src/main.jsx",
 			"globals_css.tmpl":       "frontend/src/index.css",
